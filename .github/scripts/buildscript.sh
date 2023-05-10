@@ -11,8 +11,18 @@ if [ ! -d "$JAVA_HOME" ]; then
 fi
 
 # Build Kafka using Maven
-./gradlew clean releaseTarGz -Psigning.enabled=false -DskipTests
-
+cd kafka_source_dir
+gradle
+./gradlew jar
+./gradlew srcJar
+./gradlew aggregatedJavadoc
+./gradlew javadoc
+./gradlew javadocJar # builds a javadoc jar for each module
+./gradlew scaladoc
+./gradlew scaladocJar # builds a scaladoc jar for each module
+./gradlew docsJar # builds both (if applicable) javadoc and scaladoc jars for each module
+./gradlew installAll
+./gradlew testJar
 # Replace the above line with the appropriate build command for the Kafka project.
 
 # After the build completes, the Kafka distribution artifacts will be available in the 'target' directory or as specified by the build configuration.
