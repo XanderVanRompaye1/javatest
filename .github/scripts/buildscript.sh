@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Find the Java installation path on Ubuntu
-JAVA_HOME=$(update-alternatives --query java | grep 'Value:' | grep -o '/.*/bin')
+# Set up any required environment variables or configurations for your build
+export JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64
 
 # Verify the JAVA_HOME variable is correctly set
 if [ ! -d "$JAVA_HOME" ]; then
-  echo "Error: Unable to find Java installation path."
-  echo "Please ensure Java is installed and configured correctly."
+  echo "Error: JAVA_HOME is set to an invalid directory: $JAVA_HOME"
+  echo "Please set the JAVA_HOME variable in your environment to match the location of your Java installation."
   exit 1
 fi
 
