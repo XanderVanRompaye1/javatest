@@ -61,7 +61,7 @@ jobs:
 
     - run: |
         echo "Run, Build Application using script"
-        chmod +x ./location_of_script_within_repo/buildscript.sh
+        chmod +x ./.github/scripts/buildscript.sh
         ./.github/scripts/buildscript.sh
 
 
