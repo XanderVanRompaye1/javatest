@@ -10,10 +10,13 @@ if [ ! -d "$JAVA_HOME" ]; then
   exit 1
 fi
 
-# Build the Kafka JAR
-./gradlew jar
+# Generate the Gradle wrapper files if they don't exist
+if [ ! -f "gradlew" ]; then
+  echo "Gradle wrapper files not found. Generating..."
+  gradle wrapper
+fi
 
-# Replace the above line with the appropriate build command for the Kafka project.
-# Make sure to run the build command from the root directory of the Kafka project.
+# Build the project using the Gradle wrapper
+./gradlew build
 
-# After the build completes, the Kafka JAR file will be available in the 'core/build/libs' directory or as specified by the build configuration.
+# After the build completes, you can perform any additional steps or tasks as needed.
